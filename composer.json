@@ -1,7 +1,15 @@
 {
   "name":"kyoya-de/otc-fixtures-bundle",
-  "license":"MIT",
   "type":"symfony-bundle",
+  "description":"Adds fixtures for oTranCe development.",
+  "keywords":[],
+  "license":"MIT",
+  "authors": [
+    {
+      "name": "Stefan Krenz",
+      "email": "info@kyoya.de"
+    }
+  ],
   "require": {
     "symfony/console":"~2.6",
     "symfony/framework-bundle":"~2.6"

@@ -21,9 +21,13 @@
   },
   "target-dir":"Otc/Bundle/FixturesBundle",
   "autoload": {
-    "psr-0": {"Otc\\Bundle\\FixturesBundle":""}
+    "psr-0": {
+      "Otc\\Bundle\\FixturesBundle":"",
+      "Otc\\Bundle\\FixturesBundle\\Composer\\ScriptHandler":""
+    }
   },
   "scripts":{
-    "post-install-cmd":["Otc\\Bundle\\FixturesBundle\\Composer\\ScriptHandler::updateAppKernel"]
+    "post-package-install":["Otc\\Bundle\\FixturesBundle\\Composer\\ScriptHandler::updateAppKernel"],
+    "post-package-uninstall":["Otc\\Bundle\\FixturesBundle\\Composer\\ScriptHandler::updateAppKernel"]
   }
 }

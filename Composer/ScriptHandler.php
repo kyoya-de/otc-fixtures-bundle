@@ -1,14 +1,14 @@
 <?php
 namespace Otc\Bundle\FixturesBundle\Composer;
 
-use Composer\Script\Event;
+use Composer\Installer\PackageEvent;
 
 class ScriptHandler
 {
-    public static function updateAppKernel(Event $event)
+    public static function updateAppKernel(PackageEvent $event)
     {
         ob_start();
-        var_dump($event);
-        file_put_contents(__DIR__ . '/../../../../../../../install.log', ob_get_clean());
+        var_dump($event->getOperation());
+        $event->getIO()->write(ob_get_clean(), true);
     }
 }

@@ -1,0 +1,13 @@
+{
+  "name":"kyoya-de/otc-fixtures-bundle",
+  "license":"MIT",
+  "type":"library",
+  "version":"1.0.0",
+  "require": {
+    "symfony/console":"~2.6",
+    "symfony/framework-bundle":"~2.6"
+  },
+  "autoload": {
+    "classmap": ["src/"]
+  }
+}

@@ -16,18 +16,12 @@
   },
   "require-dev":{
     "symfony/doctrine-bridge": "~2.2",
-    "doctrine/orm": "~2.2,>=2.2.3",
-    "composer/composer":"1.0.*@dev"
+    "doctrine/orm": "~2.2,>=2.2.3"
   },
   "target-dir":"Otc/Bundle/FixturesBundle",
   "autoload": {
     "psr-0": {
-      "Otc\\Bundle\\FixturesBundle":"",
-      "Otc\\Bundle\\FixturesBundle\\Composer\\ScriptHandler":""
+      "Otc\\Bundle\\FixturesBundle":""
     }
-  },
-  "scripts":{
-    "post-package-install":["Otc\\Bundle\\FixturesBundle\\Composer\\ScriptHandler::updateAppKernel"],
-    "post-package-uninstall":["Otc\\Bundle\\FixturesBundle\\Composer\\ScriptHandler::updateAppKernel"]
   }
 }

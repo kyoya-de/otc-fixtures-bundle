@@ -61,6 +61,7 @@ class InsertSamplesCommand extends ContainerAwareCommand
         $languageKey->setName("LANG_KEY_1");
         $languageKey->setKeyGroup($keyGroup);
         $manager->persist($languageKey);
+        $manager->flush();
 
         $translationEn = new Translation();
         $translationEn->setLanguage($languageEn);
@@ -73,5 +74,6 @@ class InsertSamplesCommand extends ContainerAwareCommand
         $translationDe->setLanguageKey($languageKey);
         $translationDe->setTranslation("Translated language key 1");
         $manager->persist($translationDe);
+        $manager->flush();
     }
 }

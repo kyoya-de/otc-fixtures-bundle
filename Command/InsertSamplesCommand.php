@@ -33,6 +33,7 @@ class InsertSamplesCommand extends ContainerAwareCommand
         $languageEn->setActive(true);
         $languageEn->setId(1);
         $manager->persist($languageEn);
+        $manager->flush();
 
         $languageDe = new Language();
         $languageDe->setName("Deutsch");
@@ -40,6 +41,7 @@ class InsertSamplesCommand extends ContainerAwareCommand
         $languageDe->setActive(true);
         $languageDe->setId(2);
         $manager->persist($languageDe);
+        $manager->flush();
 
         $project = new Project();
         $project->setId(1);
@@ -49,12 +51,14 @@ class InsertSamplesCommand extends ContainerAwareCommand
         $project->setUrl("http://otrance.org/");
         $project->setDefaultLanguage($languageEn);
         $manager->persist($project);
+        $manager->flush();
 
         $keyGroup = new KeyGroup();
         $keyGroup->setId(1);
         $keyGroup->setName("Group 1");
         $keyGroup->setProject($project);
         $manager->persist($keyGroup);
+        $manager->flush();
 
         $languageKey = new LanguageKey();
         $languageKey->setId(1);

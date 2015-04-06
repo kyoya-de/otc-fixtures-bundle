@@ -1,11 +1,11 @@
 <?php
 namespace Otc\Bundle\FixturesBundle\Composer;
 
-use Composer\Installer\PackageEvent;
+use Composer\Script\Event;
 
 class ScriptHandler
 {
-    public static function updateAppKernel(PackageEvent $event)
+    public static function updateAppKernel(Event $event)
     {
         ob_start();
         var_dump($event);

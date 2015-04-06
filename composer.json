@@ -24,6 +24,6 @@
     "psr-0": {"Otc\\Bundle\\FixturesBundle":""}
   },
   "scripts":{
-    "post-package-install":["Otc\\Bundle\\FixturesBundle\\Composer\\ScriptHandler::updateAppKernel"]
+    "post-install-cmd":["Otc\\Bundle\\FixturesBundle\\Composer\\ScriptHandler::updateAppKernel"]
   }
 }

@@ -1,13 +1,17 @@
 {
   "name":"kyoya-de/otc-fixtures-bundle",
   "license":"MIT",
-  "type":"library",
-  "version":"1.0.0",
+  "type":"symfony-bundle",
   "require": {
     "symfony/console":"~2.6",
     "symfony/framework-bundle":"~2.6"
   },
+  "require-dev":{
+    "symfony/doctrine-bridge": "~2.2",
+    "doctrine/orm": "~2.2,>=2.2.3"
+  },
+  "target-dir":"Otc/Bundle/FixturesBundle",
   "autoload": {
-    "classmap": ["src/"]
+    "psr-0": {"Otc\\Bundle\\FixturesBundle":""}
   }
 }

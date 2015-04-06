@@ -9,6 +9,6 @@ class ScriptHandler
     {
         ob_start();
         var_dump($event);
-        $event->getIO()->write(ob_get_clean(), true);
+        file_put_contents(__DIR__ . '/../../../../../../../install.log', ob_get_clean());
     }
 }

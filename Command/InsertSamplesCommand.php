@@ -27,6 +27,16 @@ class InsertSamplesCommand extends ContainerAwareCommand
         /** @var \Doctrine\Common\Persistence\ObjectManager $manager */
         $manager = $doctrine->getManager();
 
+        $this->importByEntities($manager);
+
+        // $this->importByDump($doctrine);
+    }
+
+    /**
+     * @param $doctrine
+     */
+    private function importByDump($doctrine)
+    {
         $dump = <<<'EOMD'
 -- MySQL dump 10.13  Distrib 5.5.41, for debian-linux-gnu (x86_64)
 --
@@ -194,5 +204,59 @@ UNLOCK TABLES;
 EOMD;
 
         $doctrine->getConnection()->exec($dump);
+    }
+
+    /**
+     * @param $manager
+     */
+    private function importByEntities($manager)
+    {
+        $languageEn = new Language();
+        $languageEn->setName('English');
+        $languageEn->setActive(true);
+        $languageEn->setLocale('en_US');
+        $manager->persist($languageEn);
+
+        $languageDe = new Language();
+        $languageDe->setName('Deutsch');
+        $languageDe->setActive(true);
+        $languageDe->setLocale('de_DE');
+        $manager->persist($languageDe);
+        $manager->flush();
+
+        $project = new Project();
+        $project->setName('TestProject');
+        $project->setEmail('info@kyoya.de');
+        $project->setUrl('https://github.com/kyoya-de/oTranCe');
+        $project->setFillUntranslated(false);
+        $project->setDefaultLanguage($languageEn);
+        $manager->persist($project);
+        $manager->flush();
+
+        $keyGroup = new KeyGroup();
+        $keyGroup->setName('Main Key Group');
+        $keyGroup->setProject($project);
+        $manager->persist($keyGroup);
+        $manager->flush();
+
+        $languageKey = new LanguageKey();
+        $languageKey->setName('FIRST_KEY');
+        $languageKey->setKeyGroup($keyGroup);
+        $manager->persist($languageKey);
+        $manager->flush();
+
+        $translationEn = new Translation();
+        $translationEn->setLanguage($languageEn);
+        $translationEn->setLanguageKey($languageKey);
+        $translationEn->setTranslation("First language key");
+        $manager->persist($translationEn);
+        $manager->flush();
+
+        $translationDe = new Translation();
+        $translationDe->setLanguage($languageDe);
+        $translationDe->setLanguageKey($languageKey);
+        $translationDe->setTranslation("First language key");
+        $manager->persist($translationDe);
+        $manager->flush();
     }
 }

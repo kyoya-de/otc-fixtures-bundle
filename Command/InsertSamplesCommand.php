@@ -207,7 +207,7 @@ EOMD;
     }
 
     /**
-     * @param $manager
+     * @param \Doctrine\Common\Persistence\ObjectManager $manager
      */
     private function importByEntities($manager)
     {
@@ -249,6 +249,7 @@ EOMD;
         $translationEn->setLanguage($languageEn);
         $translationEn->setLanguageKey($languageKey);
         $translationEn->setTranslation("First language key");
+        $translationEn->setLastUpdate(new \DateTime());
         $manager->persist($translationEn);
         $manager->flush();
 
@@ -256,6 +257,7 @@ EOMD;
         $translationDe->setLanguage($languageDe);
         $translationDe->setLanguageKey($languageKey);
         $translationDe->setTranslation("First language key");
+        $translationDe->setLastUpdate(new \DateTime());
         $manager->persist($translationDe);
         $manager->flush();
     }
